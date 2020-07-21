@@ -6,14 +6,14 @@
 #    By: gregory <gregory@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/28 13:46:16 by gregory           #+#    #+#              #
-#    Updated: 2020/07/21 13:39:08 by gregory          ###   ########.fr        #
+#    Updated: 2020/07/21 23:24:14 by gregory          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= get_next_line
 CFLAGS	= -Wall -Werror -Wextra
 LDFLAGS	= -shared -fPIC -g
-LINKER_FLAGS = -lft
+LIBRARY = libft/libft.a
 CC		= gcc
 FILES	= get_next_line.c \
 			main.c
@@ -22,10 +22,13 @@ OBJ 		= $(FILES:%.c=%.o)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) -o $@ $(OBJ) -L/home/gregory/42/prepa/gnl/get_next_line/libft $(LINKER_FLAGS)
+	$(CC) $(CFLAGS) -o $@ $(OBJ)  $(LIBRARY)
 
 $(OBJ): $(FILES)
 	$(CC) $(CFLAGS) -c $(FILES)
+
+install:
+	cd libft && make && make clean
 
 clean:
 	rm -f *.o

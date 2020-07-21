@@ -6,7 +6,7 @@
 /*   By: gregory <gregory@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/18 19:44:05 by gregory           #+#    #+#             */
-/*   Updated: 2020/07/21 13:42:12 by gregory          ###   ########.fr       */
+/*   Updated: 2020/07/21 23:10:48 by gregory          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int		unload_buffer(char *bf, char *s)
 		j++;
 	tmp = ft_strndup((bf + i), (j - i));
 	ft_memset((bf + i), '\n', (j - i));
-	ft_strjoin(s, tmp);
+	ft_strlcat(s, tmp, ft_strlen(s) + ft_strlen(tmp) + 1);
 	free(tmp);
 	if (j != BUFFER_SIZE)
 		return (1);
@@ -45,6 +45,7 @@ int		get_next_line(const int fd, char **line)
 	int			bytes_read;
 	
 	bytes_read = BUFFER_SIZE;
+	end_of_line = unload_buffer(buffer, *line);
 	while (!end_of_line && (bytes_read == BUFFER_SIZE))
 	{
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
