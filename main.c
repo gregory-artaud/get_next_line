@@ -1,22 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gregory <gregory@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/18 19:34:22 by gregory           #+#    #+#             */
-/*   Updated: 2020/07/21 13:35:01 by gregory          ###   ########.fr       */
+/*   Created: 2020/07/21 13:02:22 by gregory           #+#    #+#             */
+/*   Updated: 2020/07/21 13:40:22 by gregory          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include <fcntl.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include "libft/libft.h"
+#include "get_next_line.h"
 
-# include <malloc.h>
-# include "libft/libft.h"
-# define BUFFER_SIZE 32
+int main()
+{
+	int		fd;
+	char	*line;
+	int		flag;
 
-int	get_next_line(const int fd, char **line);
-
-#endif
+	line = malloc(sizeof(char) * 1000);
+	fd = open("test-files/test1.txt", O_RDONLY);
+	flag = 1;
+	while (flag == 1)
+	{
+		ft_bzero(line, 1000);
+		flag = get_next_line(fd, &line);
+		printf("flag = %d : %s\n", flag, line);
+	}
+}
