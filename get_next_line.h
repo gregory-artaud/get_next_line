@@ -6,7 +6,7 @@
 /*   By: gregory <gregory@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/18 19:34:22 by gregory           #+#    #+#             */
-/*   Updated: 2020/07/21 23:14:31 by gregory          ###   ########.fr       */
+/*   Updated: 2020/07/22 12:22:54 by gregory          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <malloc.h>
 # include "libft/libft.h"
-# define BUFFER_SIZE 32
+# define BUFFER_SIZE 9999
 
 int	get_next_line(const int fd, char **line);
 

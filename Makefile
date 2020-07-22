@@ -6,7 +6,7 @@
 #    By: gregory <gregory@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/28 13:46:16 by gregory           #+#    #+#              #
-#    Updated: 2020/07/21 23:24:14 by gregory          ###   ########.fr        #
+#    Updated: 2020/07/22 12:24:19 by gregory          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,9 @@ $(OBJ): $(FILES)
 
 install:
 	cd libft && make && make clean
+
+uninstall:
+	cd libft && make fclean
 
 clean:
 	rm -f *.o
