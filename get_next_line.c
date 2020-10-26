@@ -6,7 +6,7 @@
 /*   By: gregory <gregory@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/23 14:34:27 by gregory           #+#    #+#             */
-/*   Updated: 2020/10/23 16:34:00 by gregory          ###   ########lyon.fr   */
+/*   Updated: 2020/10/26 16:23:01 by gregory          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ int		get_next_line(int fd, char **line)
 			return (-1);
 		}
 		buf[bytes_read] = 0;
-		remainder = ft_strmcat(remainder, buf);
+		remainder = ft_append(remainder, buf);
 	}
-	*line = ft_strdup(remainder);
+	*line = ft_strndup(remainder, ft_strlen(remainder));
 	remainder = ft_remainder(remainder);
 	free(buf);
 	return (bytes_read != 0);

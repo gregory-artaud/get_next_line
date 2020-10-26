@@ -6,7 +6,7 @@
 /*   By: gregory <gregory@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/23 14:34:29 by gregory           #+#    #+#             */
-/*   Updated: 2020/10/23 16:18:55 by gregory          ###   ########lyon.fr   */
+/*   Updated: 2020/10/26 16:15:56 by gregory          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,12 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-# define STDIN 0
-# define BUFFER_SIZE 32
 
 int		get_next_line(int fd, char **line);
+int		ft_strlen(char *str);
+char	*ft_remainder(char *str);
+int		ft_end(char *str);
+char	*ft_strndup(char *str, int n);
+char	*ft_append(char *s1, char *s2);
 
 #endif
