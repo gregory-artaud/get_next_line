@@ -6,7 +6,7 @@
 /*   By: gregory <gregory@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/23 14:34:29 by gregory           #+#    #+#             */
-/*   Updated: 2020/10/29 15:48:24 by gregory          ###   ########lyon.fr   */
+/*   Updated: 2020/10/29 19:35:51 by gregory          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-#include <stdio.h>
 
 int		get_next_line(int fd, char **line);
 int		ft_strlen(char *str);

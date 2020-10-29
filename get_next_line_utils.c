@@ -6,7 +6,7 @@
 /*   By: gregory <gregory@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/23 14:34:17 by gregory           #+#    #+#             */
-/*   Updated: 2020/10/29 16:07:47 by gregory          ###   ########lyon.fr   */
+/*   Updated: 2020/10/29 19:18:58 by gregory          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,10 @@ char	*ft_remainder(char *str)
 	if (str[i])
 		i++;
 	if (!str[i])
+	{
+		free(str);
 		return (0);
+	}
 	if (!(res = malloc(sizeof(char) * (ft_strlen(str) - i + 1))))
 		return (0);
 	j = -1;
@@ -71,11 +74,14 @@ char	*ft_strcdup(char *s, char c)
 	if (!s)
 		return (0);
 	res_ln = ft_is_in(s, c);
+	if (res_ln == -1)
+		res_ln = ft_strlen(s);
 	if (!(res = malloc(sizeof(char) * (res_ln + 1))))
 		return (0);
 	i = -1;
 	while (++i < res_ln)
 		res[i] = s[i];
+	res[i] = 0;
 	return (res);
 }
 
@@ -86,8 +92,8 @@ char	*ft_append(char *s1, char *s2)
 	int		s1_ln;
 	int		i;
 
-	if (!s2)
-		return (s1);
+	if (!s2 && !s1)
+		return (0);
 	s1_ln = ft_strlen(s1);
 	res_ln = s1_ln + ft_strlen(s2);
 	if (!(res = malloc(sizeof(char) * (res_ln + 1))))
