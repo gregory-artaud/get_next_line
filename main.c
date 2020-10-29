@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gregory <gregory@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/23 14:34:29 by gregory           #+#    #+#             */
-/*   Updated: 2020/10/29 15:48:24 by gregory          ###   ########lyon.fr   */
+/*   Created: 2020/10/29 13:20:36 by gregory           #+#    #+#             */
+/*   Updated: 2020/10/29 15:42:55 by gregory          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-
-# include <stdlib.h>
-# include <unistd.h>
 #include <stdio.h>
+#include <fcntl.h>
+#include "get_next_line.h"
 
-int		get_next_line(int fd, char **line);
-int		ft_strlen(char *str);
-char	*ft_remainder(char *str);
-int		ft_is_in(char *str, char c);
-char	*ft_strcdup(char *str, char c);
-char	*ft_append(char *s1, char *s2);
+int main(void)
+{
+	int fd;
+	char file[] = "test.txt";
+	char *line;
+	int res;
 
-#endif
+	fd = open(file, O_RDONLY);
+	while ((res = get_next_line(fd, &line)))
+		printf("%d : %s\n", res, line);
+	printf("%d : %s\n", res, line);
+	close(fd);
+	return (0);
+}

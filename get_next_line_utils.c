@@ -6,7 +6,7 @@
 /*   By: gregory <gregory@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/23 14:34:17 by gregory           #+#    #+#             */
-/*   Updated: 2020/10/26 16:05:45 by gregory          ###   ########lyon.fr   */
+/*   Updated: 2020/10/29 16:07:47 by gregory          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int		ft_strlen(char *str)
 {
 	int		i;
 
+	if (!str)
+		return (0);
 	i = 0;
 	while (str[i])
 		i++;
@@ -28,10 +30,12 @@ char	*ft_remainder(char *str)
 	int		j;
 	char	*res;
 
+	if (!str)
+		return (0);
 	i = 0;
 	while (str[i] && str[i] != '\n')
 		i++;
-	while (str[i] == '\n')
+	if (str[i])
 		i++;
 	if (!str[i])
 		return (0);
@@ -41,31 +45,37 @@ char	*ft_remainder(char *str)
 	while (str[i + ++j])
 		res[j] = str[i + j];
 	res[j] = 0;
+	free(str);
 	return (res);
 }
 
-int		ft_end(char *str)
+int		ft_is_in(char *str, char c)
 {
 	int		i;
 
-	i = 0;
-	while (str[i])
-		if (str[i++] == '\n')
-			return (1);
-	return (0);
+	if (!str)
+		return (-1);
+	i = -1;
+	while (str[++i])
+		if (str[i] == c)
+			return (i);
+	return (-1);
 }
 
-char	*ft_strndup(char *s, int n)
+char	*ft_strcdup(char *s, char c)
 {
 	char	*res;
+	int		res_ln;
 	int		i;
 
-	if (!(res = malloc(sizeof(char) * (n + 1))))
+	if (!s)
 		return (0);
-	i = 0;
-	while (s[i] && i < n)
+	res_ln = ft_is_in(s, c);
+	if (!(res = malloc(sizeof(char) * (res_ln + 1))))
+		return (0);
+	i = -1;
+	while (++i < res_ln)
 		res[i] = s[i];
-	res[i] = 0;
 	return (res);
 }
 
@@ -76,6 +86,8 @@ char	*ft_append(char *s1, char *s2)
 	int		s1_ln;
 	int		i;
 
+	if (!s2)
+		return (s1);
 	s1_ln = ft_strlen(s1);
 	res_ln = s1_ln + ft_strlen(s2);
 	if (!(res = malloc(sizeof(char) * (res_ln + 1))))
